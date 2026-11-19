@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "platform": "twitch",
+  "platformName": "Twitch",
+  "baseUrl": "https://api.socq.ai",
+  "creditUsd": 0.005,
+  "endpoints": [
+    {
+      "publicId": "twitch/profile",
+      "name": "Twitch Profile API",
+      "description": "Resolve one public Twitch username into a normalized profile record with identity, biography, imagery, account flags, and visible follower, following, and post counts when available.",
+      "method": "POST",
+      "path": "/v1/twitch/profile",
+      "payload": "payloads/profile.json",
+      "launchedAt": "2026-08-15",
+      "price": "0.19 credits ($0.00095) per call",
+      "billing": {
+        "baseCredits": 0.19,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/twitch/profile",
+      "landingUrl": "https://socq.ai/apis/twitch/profile",
+      "required": [
+        "username"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public account username."
+          }
+        },
+        "required": [
+          "username"
+        ]
+      }
+    },
+    {
+      "publicId": "twitch/user-videos",
+      "name": "Twitch User Videos API",
+      "description": "Collect one page of public videos for a Twitch username with optional type and order filters, returning normalized video identity, creator context, media, duration, and visible engagement.",
+      "method": "POST",
+      "path": "/v1/twitch/user-videos",
+      "payload": "payloads/user-videos.json",
+      "launchedAt": "2026-08-14",
+      "price": "0.19 credits ($0.00095) per call",
+      "billing": {
+        "baseCredits": 0.19,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/twitch/user-videos",
+      "landingUrl": "https://socq.ai/apis/twitch/user-videos",
+      "required": [
+        "username"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "filter_by": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "all",
+              "archive",
+              "archives",
+              "highlight",
+              "highlights",
+              "upload",
+              "uploads"
+            ]
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "time",
+              "views"
+            ]
+          },
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public account username."
+          }
+        },
+        "required": [
+          "username"
+        ]
+      }
+    },
+    {
+      "publicId": "twitch/clip",
+      "name": "Twitch Clip Downloader API",
+      "description": "Get a Twitch clip's title, views, length, creation time, broadcaster and downloadable video file from its clip URL.",
+      "method": "POST",
+      "path": "/v1/twitch/clip",
+      "payload": "payloads/clip.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.5 credits ($0.0025) per call",
+      "billing": {
+        "baseCredits": 0.5,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/twitch/clip",
+      "landingUrl": "https://socq.ai/apis/twitch/clip",
+      "required": [
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Twitch clip URL, such as https://www.twitch.tv/<channel>/clip/<slug> or https://clips.twitch.tv/<slug>."
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "description": "Provide one Twitch clip URL in url. The result is one row with the clip title, views, duration, creation time, broadcaster and video files."
+      }
+    }
+  ]
+}

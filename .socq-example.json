@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "templateVersion": "2.0.0",
+  "kind": "platform",
+  "platform": "twitch",
+  "endpointCount": 3,
+  "endpoints": [
+    "twitch/profile",
+    "twitch/user-videos",
+    "twitch/clip"
+  ],
+  "landingPage": "https://socq.ai/apis/twitch",
+  "docsPage": "https://docs.socq.ai/api-manual/twitch/overview",
+  "generatedFrom": "SocQAPI/socq-example-template"
+}

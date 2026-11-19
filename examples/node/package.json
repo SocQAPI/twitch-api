@@ -1,0 +1,11 @@
+{
+  "name": "socq-twitch-api-node-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node socq.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
